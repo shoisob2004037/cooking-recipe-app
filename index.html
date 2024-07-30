@@ -102,16 +102,17 @@
         .meal-div h3 {
             text-align: center;
         }
+
         .meal-div ul{
             text-align: center;
             list-style: none;
-
         }
     </style>
     
 </head>
 <body>
     <div class="container">
+        <img src="food-icon-36.png" alt="Logo" style="width:100px; display:block; margin:0 auto 10px;">
         <h1 style="color:#45a049;">Recipes are Here.</h1>
         <p>Search any recipe name as their keyword like (Egg, Fish, Chicken, Beef, Onion, Soup etc)</p>
         <input type="text" placeholder="Enter any recipe..." id="input">
@@ -146,7 +147,6 @@
                         <h1>${meal.strMeal}</h1>
                         <h2>${meal.strCategory}</h2>
                         <img src="${meal.strMealThumb}" alt="${meal.strMeal}" style="width:250px; display:block; margin:0 auto; border-radius:20px; margin-bottom:10px;">
-                        <h3>Ingredients:</h3>                        
                         <h3>Ingredients:</h3>
                         <ul>${ingredients}</ul>
                         <h3>Instructions:</h3>
