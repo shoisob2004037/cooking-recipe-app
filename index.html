@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Meal Search</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalnia+Glaze:wght@100..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=PT+Sans+Narrow:wght@400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Teko:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "PT Sans Narrow", sans-serif;
+        }
+    
+        .container {
+            display: block;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            width: 400px;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 2px solid #4CAF50;
+            background-color: #e2b4e751;
+            padding: 20px;
+            margin: 20px auto;
+        }
+    
+        #input {
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+        }
+    
+        #input:focus {
+            border-color: #45a049;
+            outline: none;
+        }
+    
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        #space {
+            background-color: #e0f7fa;
+            padding: 20px;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+    
+        .meal-div {
+            background-color: #ffebee;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: justify;
+        }
+    
+        .meal-div h1 {
+            color: #3f51b5;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    
+        .meal-div h2 {
+            color: #4caf50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    
+        .meal-div p {
+            color: #581e1e;
+            line-height: 1.6;
+        }
+    
+        .meal-div a {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+        
+        .meal-div h3 {
+            text-align: center;
+        }
+        .meal-div ul{
+            text-align: center;
+            list-style: none;
+
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 style="color:#45a049;">Recipes are Here.</h1>
+        <p>Search any recipe name as their keyword like (Egg, Fish, Chicken, Beef, Onion, Soup etc)</p>
+        <input type="text" placeholder="Enter any recipe..." id="input">
+        <button onclick="searchMeal()">Search</button>
+    </div>
+    <div id="space"></div>
+  
+<script>
+    function searchMeal(){
+        const inputValue = document.getElementById('input').value;
+        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data =>{
+            const spaceDiv = document.getElementById('space');
+            spaceDiv.innerHTML = ''; 
+            if (data.meals) {
+                for(let i = 0; i < data.meals.length; i++){
+                    const meal = data.meals[i];
+                    const divNew = document.createElement('div');
+                    divNew.className = 'meal-div';
+                    console.log(meal);
+
+                    let ingredients = '';
+                    for (let j = 1; j <= 20; j++) {
+                        if (meal[`strIngredient${j}`]) {
+                            ingredients += `<li>${meal[`strIngredient${j}`]} - ${meal[`strMeasure${j}`]}</li>`;
+                        }
+                    }
+
+                    divNew.innerHTML = `
+                        <h1>${meal.strMeal}</h1>
+                        <h2>${meal.strCategory}</h2>
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}" style="width:300px; display:block; margin:0 auto; border-radius:20px; margin-bottom:10px;">
+                        <h3>Ingredients:</h3>                        
+                        <h3>Ingredients:</h3>
+                        <ul>${ingredients}</ul>
+                        <h3>Instructions:</h3>
+                        <p>${meal.strInstructions}</p>
+                        ${meal.strYoutube ? `<h3>You can visit the YouTube video for the recipe: <a href="${meal.strYoutube}" target="_blank"><button>Watch here</button></a></h3>` : ''}
+                    `;
+                    spaceDiv.appendChild(divNew);
+                }
+            } else {
+                spaceDiv.innerHTML = '<p>No results found</p>';
+            }
+        });
+    }
+</script>    
+</body>
+</html>
