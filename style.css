@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalnia+Glaze:wght@100..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=PT+Sans+Narrow:wght@400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Teko:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans Narrow", sans-serif;
+}
+
+.container {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+    background-color: #e2b4e751;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+#input {
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    padding: 10px;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+#input:focus {
+    border-color: #45a049;
+    outline: none;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#space {
+    background-color: #e0f7fa;
+    padding: 10px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.meal-div {
+    background: linear-gradient(to left,#6f5c93,#7ce5c4);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(208, 175, 122, 0.874);
+    text-align: center;
+}
+
+.meal-div h1 {
+    color: #3f51b5;
+    margin-bottom: 10px;
+}
+
+.meal-div img {
+    width: 250px;
+    border-radius: 5px;
+}
+
+.meal-div button {
+    margin-top: 10px;
+}
+
+body.no-scroll {
+overflow: hidden; /* Prevent scrolling */
+}
+
+.popup {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+align-items: center;
+justify-content: center;
+z-index: 1000;
+overflow: auto; /* Allows scrolling within the popup if needed */
+}
+
+.popup-content {
+background: white;
+padding: 20px;
+border-radius: 10px;
+max-width: 80%;
+max-height: 80%;
+overflow-y: auto;
+position: relative; /* Needed for positioning the close button */
+}
+
+.popup-close {
+position: fixed;
+top: 10px;
+right: 10px;
+width: 35px;
+height: 35px;
+border-radius: 15px;
+text-align: center;
+line-height: 30px;
+cursor: pointer;
+font-size: 1.2rem;
+color: white;
+background-color: rgb(243, 12, 12);
+transition: background-color 0.3s ease;
+}
+
+.popup-close:hover {
+background-color: rgb(200, 0, 0); /* Darker red on hover */
+}
+#popup-details{
+    background: linear-gradient(to right, rgb(128, 116, 176) 8%, #e3cc8d);
+    padding: 20px;
+    border-radius: 10px;
+}
+#popup-details ul {
+    text-align: center;
+    list-style-type: none; 
+    padding: 0; 
+}
+
+
+
+.primary-show {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 8px;
+}
+
+
+
+
+/* Navbar Styles */
+.navbar {
+    background: linear-gradient(to right,#7ce5c4,#6f5c93);
+    padding: 15px 20px; /* Padding around the navbar */
+}
+
+.navbar-container {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between logo and menu */
+    align-items: center; /* Center items vertically */
+    max-width: 1200px; /* Max width for the navbar container */
+    margin: 0 auto; /* Center the navbar horizontally */
+}
+
+
+.navbar-menu {
+    list-style: none; /* Remove default list styling */
+    display: flex; /* Display menu items in a row */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.navbar-menu li {
+    margin-left: 20px; /* Space between menu items */
+}
+
+.navbar-link {
+    color: white; /* Menu link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar-link:hover {
+    color: #ddd; /* Lighten color on hover */
+}
+.footer {
+    background: linear-gradient(to right,#7ce5c4,#6f5c93);
+    color:black;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-text {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.social-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links li {
+    display: inline;
+}
+
+.social-links a {
+    color: #861818;
+    text-decoration: none;
+}
+
+.social-links img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
